@@ -1,0 +1,3 @@
+---
+float32 last_target_x	# Last x target's position
+float32 last_target_y	# Last y target's position

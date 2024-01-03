@@ -1,0 +1,3 @@
+---
+float32 dist		# Distance of the robot from the target
+float32 avg_vel		# Robot's average speed 
