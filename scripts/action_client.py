@@ -5,11 +5,17 @@
 # (x,y,vel_x,vel_z), by relying on the values published on the topic /odom.
 
 import rospy
-from geometry_msgs.msg import Point, Pose, Twist
-from nav_msgs.msg import Odometry
+import select
+import sys
 import actionlib
 import actionlib.msg
 import assignment_2_2023.msg
+from assignment_2_2023.msg import Info
+from std_srvs.srv import *
+from geometry_msgs.msg import Point, Pose, Twist
+from nav_msgs.msg import Odometry
+
+
 
 
 def clbk_odom(msg):
@@ -34,14 +40,14 @@ def clbk_odom(msg):
 	# Pubblish new message on /robot_pos_vel topic 
 	pub.publish(new_info)
 
-def clbk_done(status, result)
+def clbk_done(status, result):
 	print("Action done: ", status)
 	print("Result: ", result)
 	
-def clbk_active()
+def clbk_active():
 	print("Action is now active")
 	
-def clbk_feedback(feedback)
+def clbk_feedback(feedback):
 	print("Received feedback: ", feedback)
 
 
@@ -57,11 +63,12 @@ def action():
 
 		# Get goal coordinates from user
 		try:
-			x = float(input("Enter x coordinate: ")
-			y = float(input("Enter y coordinate: ")
+			x = float(input("Enter x coordinate: "))
+			y = float(input("Enter y coordinate: "))
 		# Checking the correctness of inputs
 		except:
 			print("Invalid input. Please enter a number.")
+			continue
 		
 		# Initialize an instance of PlanningGoal() to pass the goal coordinates.
 		goal = assignment_2_2023.msg.PlanningGoal()
@@ -76,7 +83,16 @@ def action():
 		
 		# Now the robot is reaching the goal. If we want to stop the robot we need
 		# to cancel the goal reading the input user without blocking the execution.
-		
+		print("Robot is reaching the goal. Press 'c' to cancel the goal")
+		while not client.get_result():
+			cancel = select.select([sys.stdin], [], [], 0.1)
+			if cancel:
+				user_input = sys.stdin.readline().strip()
+				if user_input == 'c':
+					print("Goal cancelled.")
+					client.cancel_goal()
+					break
+			
 		
 	
 def main():
@@ -87,7 +103,8 @@ def main():
 	pub = rospy.Publisher('/robot_pos_vel', Info, queue_size=10)
 	sub = rospy.Subscriber('/odom', Odometry, clbk_odom)
 	
+	action()
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
 	main()
