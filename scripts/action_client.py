@@ -6,6 +6,7 @@
 
 import rospy
 import select
+import time
 import sys
 import actionlib
 import actionlib.msg
@@ -48,7 +49,8 @@ def clbk_active():
 	print("Action is now active")
 	
 def clbk_feedback(feedback):
-	print("Received feedback: ", feedback)
+	if feedback.stat == "Target reached!":
+		print("Received feedback: ", feedback)
 
 
 def action():
@@ -58,10 +60,12 @@ def action():
 	# Block the execution until communication with server is established
 	client.wait_for_server()
 
+	time.sleep(5)
 	# While loop until the program finished or interrupted
 	while not rospy.is_shutdown():
 
 		# Get goal coordinates from user
+		print("Set the goal coordinates!")
 		try:
 			x = float(input("Enter x coordinate: "))
 			y = float(input("Enter y coordinate: "))
@@ -79,12 +83,13 @@ def action():
 		# done_cb = The action is done.
 		# active_cb = The action becomes active.
 		# feedback_cb = The action sends feedback.
-		client.send_goal(goal, done_cb=clbk_done, active_cb=clbk_active, feedback_cb=clbk_feedback)
+		client.send_goal(goal, clbk_done, None, clbk_feedback)
 		
+		feedback = assignment_2_2023.msg.PlanningFeedback()
 		# Now the robot is reaching the goal. If we want to stop the robot we need
 		# to cancel the goal reading the input user without blocking the execution.
-		print("Robot is reaching the goal. Press 'c' to cancel the goal")
-		while not client.get_result():
+		while feedback.stat != "Target reached!":
+			print("Robot is reaching the goal. Press 'c' to cancel the goal")
 			cancel = select.select([sys.stdin], [], [], 0.1)
 			if cancel:
 				user_input = sys.stdin.readline().strip()
