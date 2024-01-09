@@ -8,6 +8,7 @@ import rospy
 import select
 import time
 import sys
+import os
 import actionlib
 import actionlib.msg
 import assignment_2_2023.msg
@@ -17,15 +18,11 @@ from geometry_msgs.msg import Point, Pose, Twist
 from nav_msgs.msg import Odometry
 
 
-
-
 def clbk_odom(msg):
 # Callback function that process incoming Odometry messages,
 # extract informations about: position x, position y, linear velocity x and
 # angular velocity z; Save these informations in a custom message Info()
 # and pubblish that informations on /robot_pos_vel topic.
-
-	global pub
 	
 	# Initialize a new message
 	# The struct of Info() is (x,y,vel_x,vel_z)
@@ -41,18 +38,23 @@ def clbk_odom(msg):
 	# Pubblish new message on /robot_pos_vel topic 
 	pub.publish(new_info)
 
-def clbk_done(status, result):
-	print("Action done: ", status)
-	print("Result: ", result)
-	
-def clbk_active():
-	print("Action is now active")
-	
+
 def clbk_feedback(feedback):
-	if feedback.stat == "Target reached!":
-		print("Received feedback: ", feedback)
+	if feedback.stat == "Target reached!" or feedback.stat == "Target cancelled!":
+		print(feedback)
+		print("Press 'Enter' to set a new goal")
+	
 
+def clear_terminal():
+# Function to clear the terminal
 
+    # Check the operating system
+    if os.name == 'posix':  # Unix-like system (Linux, macOS)
+        os.system('clear')
+    elif os.name == 'nt':  # Windows
+        os.system('cls')
+        
+        
 def action():
 	
 	# Execution of client request to the server
@@ -60,7 +62,11 @@ def action():
 	# Block the execution until communication with server is established
 	client.wait_for_server()
 
+	# Addition of a time sleep to wait for the Gazebo environment to start up
 	time.sleep(5)
+	# Terminal cleaning
+	clear_terminal() # comment this line for debugging!
+	
 	# While loop until the program finished or interrupted
 	while not rospy.is_shutdown():
 
@@ -79,23 +85,22 @@ def action():
 		goal.target_pose.pose.position.x = x
 		goal.target_pose.pose.position.y = y
 		
-		# Send the goal to the action server and set the callbacks for when:
+		# Send the goal to the action server and set callbacks for when:
 		# done_cb = The action is done.
 		# active_cb = The action becomes active.
 		# feedback_cb = The action sends feedback.
-		client.send_goal(goal, clbk_done, None, clbk_feedback)
+		client.send_goal(goal, None, None, clbk_feedback)
 		
-		feedback = assignment_2_2023.msg.PlanningFeedback()
 		# Now the robot is reaching the goal. If we want to stop the robot we need
 		# to cancel the goal reading the input user without blocking the execution.
-		while feedback.stat != "Target reached!":
-			print("Robot is reaching the goal. Press 'c' to cancel the goal")
+		while not client.get_result():
+			print("Robot is reaching the goal.\nPress 'c' to cancel the goal.")
 			cancel = select.select([sys.stdin], [], [], 0.1)
 			if cancel:
 				user_input = sys.stdin.readline().strip()
 				if user_input == 'c':
-					print("Goal cancelled.")
 					client.cancel_goal()
+					time.sleep(2)
 					break
 			
 		
