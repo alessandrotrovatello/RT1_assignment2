@@ -40,9 +40,11 @@ def clbk_odom(msg):
 
 
 def clbk_feedback(feedback):
-	if feedback.stat == "Target reached!" or feedback.stat == "Target cancelled!":
+	if feedback.stat == "Target reached!":
 		print(feedback)
-		print("Press 'Enter' to set a new goal")
+		print("Press 'Enter' to set a new goal\n")
+	if feedback.stat == "Target cancelled!":
+		print(feedback)
 	
 
 def clear_terminal():
@@ -75,8 +77,14 @@ def action():
 		try:
 			x = float(input("Enter x coordinate: "))
 			y = float(input("Enter y coordinate: "))
-		# Checking the correctness of inputs
-		except:
+			# Checking the correctness of inputs
+			if -9 <= x <= 9 and -9 <= y <= 9:
+				# Prints the set goal
+				print(f"Goal coordinates set: (x={x},y={y})")
+			else:
+				print("Invalid input. Please enter x and y coordinates within the range -9 to 9.")
+				continue
+		except ValueError:
 			print("Invalid input. Please enter a number.")
 			continue
 		
@@ -94,13 +102,14 @@ def action():
 		# Now the robot is reaching the goal. If we want to stop the robot we need
 		# to cancel the goal reading the input user without blocking the execution.
 		while not client.get_result():
-			print("Robot is reaching the goal.\nPress 'c' to cancel the goal.")
+			time.sleep(0.5)
+			print("Robot is reaching the goal. Press 'c' to cancel the goal.")
 			cancel = select.select([sys.stdin], [], [], 0.1)
 			if cancel:
 				user_input = sys.stdin.readline().strip()
 				if user_input == 'c':
 					client.cancel_goal()
-					time.sleep(2)
+					time.sleep(0.5)
 					break
 			
 		
