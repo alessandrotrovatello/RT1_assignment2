@@ -6,15 +6,17 @@
 
 import rospy
 import assignment_2_2023.msg
-from assignment_2_2023.srv import last_target, last_targetResponse
+from assignment_2_2023.srv import Last_target, Last_targetResponse
 
-def clbk_service():
+def clbk_service(request):
 # Callback to return the last target coordinates to the service
 
-	return last_targetResponse(last_target_x, last_target_y)
+	global last_target_x, last_target_y
+
+	return Last_targetResponse(last_target_x, last_target_y)
 
 
-def clbk_goal():
+def clbk_goal(msg):
 # Callback to retrieve the last target coordinates
 
 	global last_target_x, last_target_y
@@ -30,7 +32,7 @@ def main():
 	rospy.init_node("last_target")
 	
 	# Creating a ROS service server
-	rospy.Service("last_target", last_target, clbk_service)
+	rospy.Service("last_target", Last_target, clbk_service)
 	
 	# Creating a ROS subscriber to subscribe on /reaching_goal/goal topic the last target coordinates
 	rospy.Subscriber('/reaching_goal/goal', assignment_2_2023.msg.PlanningActionGoal, clbk_goal)
@@ -39,5 +41,5 @@ def main():
 	rospy.spin()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
 	main()
