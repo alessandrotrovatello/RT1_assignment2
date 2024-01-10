@@ -117,11 +117,16 @@ def action():
 def main():
 	global pub, sub
 	
+	# Initialize the service node
 	rospy.init_node('action_client')
-	
+
+	# Creating a ROS publisher to publish on /robot_pos_vel topic the position and velocity of Robot
 	pub = rospy.Publisher('/robot_pos_vel', Info, queue_size=10)
+
+	# Creating a ROS subscriber to listens to the /odom topic
 	sub = rospy.Subscriber('/odom', Odometry, clbk_odom)
 	
+	# Run the action function
 	action()
 
 
