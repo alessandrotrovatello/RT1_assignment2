@@ -6,16 +6,14 @@
 
 import rospy
 import select
-import time
-import sys
-import os
 import actionlib
 import actionlib.msg
 import assignment_2_2023.msg
-from assignment_2_2023.msg import Info
 from std_srvs.srv import *
-from geometry_msgs.msg import Point, Pose, Twist
 from nav_msgs.msg import Odometry
+from assignment_2_2023.msg import Info
+from geometry_msgs.msg import Point, Pose, Twist
+
 
 
 def clbk_odom(msg):
@@ -45,16 +43,6 @@ def clbk_feedback(feedback):
 		print("Press 'Enter' to set a new goal\n")
 	if feedback.stat == "Target cancelled!":
 		print(feedback)
-	
-
-def clear_terminal():
-# Function to clear the terminal
-
-    # Check the operating system
-    if os.name == 'posix':  # Unix-like system (Linux, macOS)
-        os.system('clear')
-    elif os.name == 'nt':  # Windows
-        os.system('cls')
         
         
 def action():
@@ -63,11 +51,6 @@ def action():
 	client = actionlib.SimpleActionClient('/reaching_goal', assignment_2_2023.msg.PlanningAction)
 	# Block the execution until communication with server is established
 	client.wait_for_server()
-
-	# Addition of a time sleep to wait for the Gazebo environment to start up
-	time.sleep(5)
-	# Terminal cleaning
-	clear_terminal() # comment this line for debugging!
 	
 	# While loop until the program finished or interrupted
 	while not rospy.is_shutdown():
@@ -102,14 +85,12 @@ def action():
 		# Now the robot is reaching the goal. If we want to stop the robot we need
 		# to cancel the goal reading the input user without blocking the execution.
 		while not client.get_result():
-			time.sleep(0.5)
 			print("Robot is reaching the goal. Press 'c' to cancel the goal.")
 			cancel = select.select([sys.stdin], [], [], 0.1)
 			if cancel:
 				user_input = sys.stdin.readline().strip()
 				if user_input == 'c':
 					client.cancel_goal()
-					time.sleep(0.5)
 					break
 			
 		
