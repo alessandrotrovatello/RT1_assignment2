@@ -62,6 +62,11 @@ def clbk_avg(request):
 	mean_vel_x = round(mean_vel_x,3)
 	mean_vel_z = round(mean_vel_z,3)
 	
+	print(f"Distance between the robot and the target is: {dist} m")
+	print(f"Average of linear velocity along Robot x-axis is: {mean_vel_x} m/s")
+	print(f"Average of angular velocity around Robot z-axis is: {mean_vel_z} rad/s")
+	print("----------------------------------------------------------------")
+	
 	return Avg_dist_velResponse(dist, mean_vel_x, mean_vel_z)
 
 
