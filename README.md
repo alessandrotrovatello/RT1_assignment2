@@ -15,3 +15,15 @@ The starting point of the assignment is reachable in the [starting_point](https:
 
 ## How to use
 
+The assignment is developed in Ubuntu 20.04 LTS using ROS Noetic.
+
+To use the code create a new directory and move in it:
+```bash
+$ mkdir directory_name
+$ cd directory_name
+```
+Now you can clone this repository by using [GIT](https://github.com/git-guides/install-git):
+```bash
+$ 
+```
+
