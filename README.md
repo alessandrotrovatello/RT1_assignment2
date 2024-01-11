@@ -15,7 +15,7 @@ The starting point of the assignment is reachable in the [starting_point](https:
 
 ## How to use
 
-The assignment is developed in Ubuntu 20.04 LTS using ROS Noetic.
+The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu).
 
 To use the code create a new directory and move in it:
 ```bash
