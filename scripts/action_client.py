@@ -4,6 +4,7 @@
 # The node also publishes the robot position and velocity as a custom message
 # (x,y,vel_x,vel_z), by relying on the values published on the topic /odom.
 
+import time
 import rospy
 import select
 import actionlib
@@ -44,7 +45,6 @@ def clbk_feedback(feedback):
 	if feedback.stat == "Target cancelled!":
 		print(feedback)
         
-        
 def action():
 	
 	# Execution of client request to the server
@@ -54,7 +54,7 @@ def action():
 	
 	# While loop until the program finished or interrupted
 	while not rospy.is_shutdown():
-
+		time.sleep(0.5)
 		# Get goal coordinates from user
 		print("Set the goal coordinates!")
 		try:
