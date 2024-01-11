@@ -10,3 +10,4 @@ The main task of this assignment is to create a ROS package which must include t
 - Another service node that subscribes to the robot’s position and velocity (using the custom message) and implements a server to retrieve the distance of the robot from the target and the robot’s average speed.
   
 Another task is to create a launch file to start the entire simulation, in which a parameter must be used to select the size of the averaging window.
+The starting point of the assignment is reachable in the [starting_point]() branch
