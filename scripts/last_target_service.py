@@ -12,6 +12,10 @@ def clbk_service(request):
 # Callback to return the last target coordinates to the service
 
 	global last_target_x, last_target_y
+	
+	print("Last target x coordinate is: ", last_target_x)
+	print("Last target y coordinate is: ", last_target_y)
+	print("---------------------------------")
 
 	return Last_targetResponse(last_target_x, last_target_y)
 
