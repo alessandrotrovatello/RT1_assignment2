@@ -24,6 +24,7 @@ $ cd directory_name
 ```
 Now you can clone this repository by using [GIT](https://github.com/git-guides/install-git):
 ```bash
-$ 
+$ git clone https://github.com/alessandrotrovatello/RT1_assignment2
 ```
+
 
