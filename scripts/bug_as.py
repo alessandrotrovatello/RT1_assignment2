@@ -21,12 +21,12 @@ pose_ = Pose()
 desired_position_ = Point()
 desired_position_.z = 0
 regions_ = None
-state_desc_ = ['Go to point', 'wall following', 'done','goal canceled']
+state_desc_ = ['Go to point', 'wall following', 'done']
 state_ = 0
 # 0 - go to point
 # 1 - wall following
 # 2 - done
-# 3 - goal canceled
+# 3 - canceled
 # callbacks
 
 
@@ -70,10 +70,9 @@ def change_state(state):
     if state_ == 1:
         resp = srv_client_go_to_point_(False)
         resp = srv_client_wall_follower_(True)
-    if state_ == 2 or state_ == 3:
+    if state_ == 2:
         resp = srv_client_go_to_point_(False)
         resp = srv_client_wall_follower_(False)
-
 
 
 def normalize_angle(angle):
@@ -114,7 +113,7 @@ def planning(goal):
             act_s.publish_feedback(feedback)
             act_s.set_preempted()
             success = False
-            change_state(3)
+            change_state(2)
             done()
             break
         elif err_pos < 0.5:
@@ -144,9 +143,8 @@ def planning(goal):
                 change_state(0)
         elif state_== 2:
             break
-        elif state_== 3:
-            break
-
+            
+            
         else:
             rospy.logerr('Unknown state!')
 
@@ -155,7 +153,7 @@ def planning(goal):
     if success:
         rospy.loginfo('Goal: Succeeded!')
         act_s.set_succeeded(result)
-
+    
     
 
 def main():
