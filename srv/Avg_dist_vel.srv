@@ -1,6 +1,0 @@
-# Request
----
-# Response
-float64 dist # Distance of the robot from the target
-float64 avg_lin_vel_x # Average linear velocity along x axis
-float64 avg_ang_vel_z # Average angular velocity around z axis

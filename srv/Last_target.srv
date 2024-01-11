@@ -1,5 +1,0 @@
-# Request
----
-# Response
-float64 last_target_x	# Last x target's coordinate
-float64 last_target_y	# Last y target's coordinate
