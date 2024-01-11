@@ -9,7 +9,7 @@
     <node pkg="assignment_2_2023" type="wall_follow_service.py" name="wall_follower" />
     <node pkg="assignment_2_2023" type="go_to_point_service.py" name="go_to_point" />
     <node pkg="assignment_2_2023" type="last_target_service.py" name="last_target" />
-    <node pkg="assignment_2_2023" type="avg_service.py" name="avg_dist_vel" />
+    <node pkg="assignment_2_2023" type="avg_service.py" name="avg_dist_vel" output="screen" />
     <node pkg="assignment_2_2023" type="bug_as.py" name="bug_action_service" output="screen" />
-    <node pkg="assignment_2_2023" type="action_client.py" name="action_client" output="screen" />
+    <node pkg="assignment_2_2023" type="action_client.py" name="action_client" launch-prefix="xterm -e" />
 </launch>
