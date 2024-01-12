@@ -26,8 +26,9 @@ Where we can see how the nodes, the msg and srv communicate with each other, in 
 The nodes developed are an action client and two service node to get information about last target coordinates and the distance between the robot and target and the average speed of the robot:
 - *action_client* is the node that allows us to get the goal coordinates from the user to be sent to the server throught the `/reaching_goal` topic; the node allow us to cancel the goal while the robot is reaching the goal. The following flowchart explains how the action client is structured:
 
-![*action_client*'s flowchart](https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/action_client_flowchart.png)
-
+<p align="center">
+  <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/action_client_flowchart.png" alt="*action_client*'s flowchart">
+</p>
 
 ## How to use
 
