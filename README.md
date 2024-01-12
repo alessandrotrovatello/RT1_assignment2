@@ -24,7 +24,7 @@ To give a better idea of how the architecture is composed, this below is a graph
 Where we can see how the nodes, the msg and srv communicate with each other, in a better and clearly way.
 
 The nodes developed are an action client and two service node to get information about last target coordinates and the distance between the robot and target and the average speed of the robot:
-- *action_client* is the node that allows us to get the goal coordinates from the user to be sent to the server throught the `/reaching_goal` topic; the node allow us to cancel the goal while the robot is reaching the goal. The following flowchart explains how the action client is structured:
+- *action_client* is the node that allows us to get the goal coordinates from the user to be sent to the server throught the `/reaching_goal` topic; the node allow us to cancel the goal while the robot is reaching the goal. Addiotionally, the node publish the information about robot position and velocity in a `/robot_pos_vel` topic as a custom message. The following flowchart explains how the action client is structured:
 
 <p align="center">
   <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/action_client_flowchart.png" alt="*action_client*'s flowchart">
@@ -33,6 +33,11 @@ The nodes developed are an action client and two service node to get information
 There is a little control on the user input to get only coordinates in range to [-9,9] due to the size of the environment (10x10 grid), furthermore there is a goal threshold to prevent the robot from not reaching the desired position in case that position is occupied by an obstacle.
 
 - *last_target_service* is a service that allows us to get the last goal coordinates from the `/reaching_goal/goal` topic. The service can be called writing:
+```bash
+rosservice call /last_target
+```
+
+- *avg_service* is a service that allows us to get the goal coordinates from the ROS param, defined in the assignment1.launch, by using `rospy.get_param("param_name")`, the robot position and the robot velocity are get from the `/robot_pos_vel` topic, throught the msg param. In addition, this service subscribeThe service can be called writing:
 ```bash
 rosservice call /last_target
 ```
