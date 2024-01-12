@@ -30,6 +30,13 @@ The nodes developed are an action client and two service node to get information
   <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/action_client_flowchart.png" alt="*action_client*'s flowchart">
 </p>
 
+There is a little control on the user input to get only coordinates in range to [-9,9] due to the size of the environment (10x10 grid), furthermore there is a goal threshold to prevent the robot from not reaching the desired position in case that position is occupied by an obstacle.
+
+- *last_target_service* is a service that allows us to get the last goal coordinates from the `/reaching_goal/goal` topic. The service can be called writing:
+```bash
+rosservice call /last_target
+```
+
 ## How to use
 
 The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu), while the simulation environmnet used is [Gazebo](https://gazebosim.org/docs/harmonic/architecture) (not to be downloaded).
