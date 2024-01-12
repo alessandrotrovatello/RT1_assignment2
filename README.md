@@ -17,14 +17,17 @@ The starting point of the assignment is reachable in the [starting_point](https:
 
 The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu).
 
-To use the code create a new directory and move in it:
+To use the code create a new directory:
 ```bash
-$ mkdir directory_name
-$ cd directory_name
+mkdir directory_name
+```
+And move in it:
+```bash
+cd directory_name
 ```
 Now you can clone this repository by using [GIT](https://github.com/git-guides/install-git):
 ```bash
-$ git clone https://github.com/alessandrotrovatello/RT1_assignment2
+git clone https://github.com/alessandrotrovatello/RT1_assignment2
 ```
 
 
