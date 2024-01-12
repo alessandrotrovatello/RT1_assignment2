@@ -2,7 +2,7 @@
 
 Second assignment of the Research Track 1 course of the Master's degree in Robotics Engineering at the University of Genoa.
 
-## Assignment
+## Assignment description
 
 The main task of this assignment is to create a ROS package which must include the following three nodes:
 - A node that implements an action client, allowing the user to set a target (x, y) or to cancel it. Trying to use the feedback/status of the action server to know when the target has been reached. The node also publishes the robot position and velocity as a custom message (x,y, vel_x, vel_z), by relying on the values published on the topic /odom;
@@ -37,7 +37,7 @@ There is a little control on the user input to get only coordinates in range to 
 rosservice call /last_target
 ```
 
-## How to use
+## How to run the code
 
 The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu), while the simulation environmnet used is [Gazebo](https://gazebosim.org/docs/harmonic/architecture) (not to be downloaded).
 
