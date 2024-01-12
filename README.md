@@ -13,6 +13,17 @@ Another task is to create a launch file to start the entire simulation, in which
 
 The starting point of the assignment is reachable in the [starting_point](https://github.com/alessandrotrovatello/RT1_assignment2/tree/starting_point) branch.
 
+## ROS Architecture
+
+The ROS architecture consists of a few nodes that communicate with each other via msg. The library that allows us to set and/or send the target (or goal) is [**actionlib**](https://wiki.ros.org/actionlib), this ROS library is used to handling asynchronous tasks. It facilitates communication between a client and a server node, supporting the execution of long-duration tasks with asynchronous feedback. Key features include asynchronous communication, feedback during task execution, result reporting, goal specification, and support for retries in case of failure. It enhances the robustness and efficiency of managing complex actions in robotic systems.
+
+To give a better idea of how the architecture is composed, this below is a graph of the ROS architecture:
+
+![ROS Architecture of the assignment](https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/rosgraph.png)
+
+Where we can see how the nodes, the msg and srv communicate with each other, in a better and clearly way.
+
+
 ## How to use
 
 The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu).
