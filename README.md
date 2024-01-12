@@ -39,7 +39,7 @@ rosservice call /last_target
 
 - *avg_service* is a service that allows us to get the goal coordinates from the ROS param, defined in the assignment1.launch, by using `rospy.get_param("param_name")`, the robot position and the robot velocity are get from the `/robot_pos_vel` topic, throught the msg param. In addition, this service subscribeThe service can be called writing:
 ```bash
-rosservice call /last_target
+rosservice call /avg_dist_vel
 ```
 
 ## How to run the code
