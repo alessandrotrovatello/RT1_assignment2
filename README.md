@@ -15,7 +15,7 @@ The starting point of the assignment is reachable in the [starting_point](https:
 
 ## ROS Architecture
 
-The ROS architecture consists of a few nodes that communicate with each other via msg. The library that allows us to set and/or send the target (or goal) is [**actionlib**](https://wiki.ros.org/actionlib), this ROS library is used to handling asynchronous tasks. It facilitates communication between a client and a server node, supporting the execution of long-duration tasks with asynchronous feedback. Key features include asynchronous communication, feedback during task execution, result reporting, goal specification, and support for retries in case of failure. It enhances the robustness and efficiency of managing complex actions in robotic systems.
+The ROS architecture consists of a few nodes that communicate with each other via msgs published in topics. The library that allows us to set and/or send the target (or goal) is [**actionlib**](https://wiki.ros.org/actionlib), this ROS library is used to handling asynchronous tasks. It facilitates communication between a client and a server node, supporting the execution of long-duration tasks with asynchronous feedback. Key features include asynchronous communication, feedback during task execution, result reporting, goal specification, and support for retries in case of failure. It enhances the robustness and efficiency of managing complex actions in robotic systems.
 
 To give a better idea of how the architecture is composed, this below is a graph of the ROS architecture:
 
@@ -23,10 +23,15 @@ To give a better idea of how the architecture is composed, this below is a graph
 
 Where we can see how the nodes, the msg and srv communicate with each other, in a better and clearly way.
 
+The nodes developed are an action client and two service node to get information about last target coordinates and the distance between the robot and target and the average speed of the robot:
+- *action_client* is the node that allows us to get the goal coordinates from the user to be sent to the server throught the `/reaching_goal` topic; the node allow us to cancel the goal while the robot is reaching the goal. The following flowchart explains how the action client is structured:
+
+![*action_client*'s flowchart](https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/action_client_flowchart.png)
+
 
 ## How to use
 
-The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu).
+The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu), while the simulation environmnet used is [Gazebo](https://gazebosim.org/docs/harmonic/architecture) (not to be downloaded).
 
 To use the code create a new directory:
 ```bash
