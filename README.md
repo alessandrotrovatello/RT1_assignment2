@@ -125,7 +125,7 @@ The time to run the code has come, so, all you have to do is run the *.launch* f
 roslaunch assignment_2_2023 assignment1.launch
 ```
 
-Will open: three white terminals, RViz (ROS Visualisation) to display the robot data and the Gazebo simulation environment. Once everything is open, it's time to test the code!
+Will open: three white xterm terminals, RViz (ROS Visualisation) to display the robot data and the Gazebo simulation environment. Once everything is open, it's time to test the code!
 
 <p align="center">
   <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/simulation.png" alt="Simulation">
