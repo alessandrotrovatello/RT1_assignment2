@@ -19,7 +19,7 @@ The ROS architecture consists of a few nodes that communicate with each other vi
 
 To give a better idea of how the architecture is composed, this below is a graph of the ROS architecture:
 
-![ROS Architecture of the assignment](https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/rosgraph.png)
+![ROS Architecture of the assignment](https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/rosgraph.png)
 
 Where we can see how the nodes, the msg and srv communicate with each other, in a better and clearly way.
 
