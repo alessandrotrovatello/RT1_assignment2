@@ -32,7 +32,7 @@ The nodes developed are an action client and two service node to get information
 
 There is a little control on the user input to get only coordinates in range to [-9,9] due to the size of the environment (10x10 grid), furthermore there is a goal threshold to prevent the robot from not reaching the desired position in case that position is occupied by an obstacle.
 
-- **last_target_service** is a service node that allows us to get the last goal coordinates from the `/reaching_goal/goal` topic. The service can be called writing:
+- **last_target_service** is a service node that allows us to get the last goal coordinates from the `/reaching_goal/goal` topic. This info is can be retrieved calling the service as below:
 ```bash
 rosservice call /last_target
 ```
