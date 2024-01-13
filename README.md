@@ -60,12 +60,7 @@ rosservice call /avg_dist_vel
 
 The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu), while the simulation environmnet used is [Gazebo](https://gazebosim.org/docs/harmonic/architecture) (not to be downloaded).
 
-The code must be cloned within your ROS workspace, if you already have a ROS workspace skip the next steps until the [git clone](#clone) command.
-
-First, it is necessary to install `xterm`; a kind terminal for a clearer overview:
-```bash
-sudo apt-get -y install xterm
-```
+The code must be cloned within your ROS workspace, if you already have a ROS workspace skip the next steps until the [xterm](#xterm) installation.
 
 <a name="rosws"></a>
 ### How to setup your ROS workspace
@@ -109,7 +104,11 @@ In this way (note that there should be a command line to start ROS Noetic `sourc
 
 Save the file and restart the terminal, you're Done!
 
-<a name="clone"></a>
+<a name="xterm"></a>
+To run the code is necessary to install `xterm`; a kind terminal for a clearer overview:
+```bash
+sudo apt-get -y install xterm
+```
 To download this repository, move to the `src` folder inside your ROS workspace. Now you can clone this repository by using [GIT](https://github.com/git-guides/install-git) in this way:
 ```bash
 git clone https://github.com/alessandrotrovatello/RT1_assignment2
