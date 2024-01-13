@@ -8,7 +8,8 @@ Second assignment of the Research Track 1 course of the Master's degree in Robot
 ## Table of contents
 - [Assignment description](#assignmentdescription)
 - [ROS Architecture](#rosarchitecture)
-- [Setup your ROS workspace](#rosws)
+- [How to download the repository](#rosrep)
+  - [Setup your ROS workspace](#rosws)
 - [How to run the code](#howto)
 
 <a name="assignmentdescription"></a>
@@ -52,14 +53,16 @@ rosservice call /last_target
 ```bash
 rosservice call /avg_dist_vel
 ```
-<a name="rosws"></a>
-## Setup your ROS workspace
+<a name="rosrep"></a>
+## How to download the repository
 
 The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu), while the simulation environmnet used is [Gazebo](https://gazebosim.org/docs/harmonic/architecture) (not to be downloaded).
 
 The code must be cloned within your ROS workspace, if you already have a ROS workspace skip the next steps until the [git clone](#clone) command.
 
-To use the code create a new directory:
+<a name="rosws"></a>
+### How to setup your ROS workspace
+To setup your own ROS workspace, the first step is to create a new directory:
 ```bash
 mkdir directory_name
 ```
