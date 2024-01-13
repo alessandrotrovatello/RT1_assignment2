@@ -150,7 +150,7 @@ And you can see the result inside the `last_target_service.py` xterm terminal:
   <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/last_target.png" alt="Last target">
 </p>
 
-To retrieve the distance between the robot and the target, the average of linear velocity along robot x-axis and the average of angular valocity along robot z-axis:
+To retrieve the distance between the robot and the target, the average of linear velocity along robot x-axis and the average of angular velocity along robot z-axis:
 ```bash
 rosservice call /avg_dist_vel
 ```
