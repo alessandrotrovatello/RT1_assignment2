@@ -5,6 +5,12 @@ Second assignment of the Research Track 1 course of the Master's degree in Robot
   <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/grid.png" alt="Environment">
 </p>
 
+## Table of contents
+- [Assignment description](#assignmentdescription)
+- [ROS Architecture](#rosarchitecture)
+- [How to run the code](#howto)
+
+<a name="assignmentdescription"></a>
 ## Assignment description
 
 The main task of this assignment is to create a ROS package which must include the following three nodes:
@@ -16,6 +22,7 @@ Another task is to create a launch file to start the entire simulation, in which
 
 The starting point of the assignment is reachable in the [starting_point](https://github.com/alessandrotrovatello/RT1_assignment2/tree/starting_point) branch. Nodes already implemented are *go_to_point_service.py*, *wall_follow_service.py* and *bug_as.py* that manages the robot's algorithm in reaching the goal, such as system messages and obstacle avoidance management.
 
+<a name="rosarchitecture"></a>
 ## ROS Architecture
 
 The ROS architecture consists of a few nodes that communicate with each other via msgs published in topics. The library that allows us to set and send the target (or goal) is [**actionlib**](https://wiki.ros.org/actionlib), this ROS library is used to handling asynchronous tasks. It facilitates communication between a client and a server node, supporting the execution of long-duration tasks with asynchronous feedback. Key features include asynchronous communication, feedback during task execution, result reporting, goal specification, and support for retries in case of failure. It enhances the robustness and efficiency of managing complex actions in robotic systems.
@@ -44,7 +51,7 @@ rosservice call /last_target
 ```bash
 rosservice call /avg_dist_vel
 ```
-
+<a name="howto"></a>
 ## How to run the code
 
 The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) using [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu), while the simulation environmnet used is [Gazebo](https://gazebosim.org/docs/harmonic/architecture) (not to be downloaded).
