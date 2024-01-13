@@ -1,6 +1,9 @@
 # 3D Robot Simulation
 
 Second assignment of the Research Track 1 course of the Master's degree in Robotics Engineering at the University of Genoa.
+<p align="center">
+  <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/grid.png" alt="Environment">
+</p>
 
 ## Assignment description
 
@@ -15,7 +18,7 @@ The starting point of the assignment is reachable in the [starting_point](https:
 
 ## ROS Architecture
 
-The ROS architecture consists of a few nodes that communicate with each other via msgs published in topics. The library that allows us to set and/or send the target (or goal) is [**actionlib**](https://wiki.ros.org/actionlib), this ROS library is used to handling asynchronous tasks. It facilitates communication between a client and a server node, supporting the execution of long-duration tasks with asynchronous feedback. Key features include asynchronous communication, feedback during task execution, result reporting, goal specification, and support for retries in case of failure. It enhances the robustness and efficiency of managing complex actions in robotic systems.
+The ROS architecture consists of a few nodes that communicate with each other via msgs published in topics. The library that allows us to set and send the target (or goal) is [**actionlib**](https://wiki.ros.org/actionlib), this ROS library is used to handling asynchronous tasks. It facilitates communication between a client and a server node, supporting the execution of long-duration tasks with asynchronous feedback. Key features include asynchronous communication, feedback during task execution, result reporting, goal specification, and support for retries in case of failure. It enhances the robustness and efficiency of managing complex actions in robotic systems.
 
 To give a better idea of how the architecture is composed, this below is a graph of the ROS architecture:
 
