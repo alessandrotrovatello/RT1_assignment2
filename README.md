@@ -165,3 +165,5 @@ It will certainly be possible to cancel the set goal while the robot is in motio
 
 <a name="improvements"></a>
 ## Possible improvements
+
+The simulation has a few problems, such as the robot could get stuck near an obstacle, to avoid this problem one could implement the reverse gear so that the robot could be unstack. Also, one could increase the robot's speed while being careful as the robot is very light, but for this one could modify the robot's physics. The most significant improvement I would make is the management of the choice of whether to go around an obstacle from the right or the left depending on the geometry of the obstacle, sometimes this problem could lengthen the time to reach the goal by a lot; the robot is equipped with a scan that can see the obstacles, you could make it make decisions based on its surroundings.
