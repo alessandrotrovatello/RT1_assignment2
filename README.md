@@ -70,12 +70,46 @@ And move in it:
 ```bash
 cd directory_name
 ```
+Now you are inside the *directory_name* folder and you need to create another directory with the name 'src':
+```bash
+mkdir src
+```
+At this point you are ready to set up your ROS workspace with the following command:
+```bash
+catkin_make
+```
+
+To help you understand the steps I attach a photo of what your terminal should look like:
+
+![Bash](https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/bash.png)
+
+Then, press enter and your ROS workspace will be compiled, two directory are will be created inside your workspace.
+The last step is to insert the path of your ROS workspace inside the `.bashrc` file to make sure you are running your ROS workspace every time you open the terminal. So, go back with the following command:
+```bash
+cd ..
+```
+And open your `.bashrc` file:
+```bash
+gedit .bashrc
+```
+Scroll the page until the end and insert your ROS workspace path, if you have followed the steps it should be:
+```bash
+source ~/directory_name/devel/setup.bash
+```
+In this way (note that there should be a command line to start ROS Noetic `source /opt/ros/noetic/setup.bash`):
+
+![Source](https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/source.png)
+
+Save the file and restart the terminal, you're Done!
+
 <a name="clone"></a>
-Now you can clone this repository by using [GIT](https://github.com/git-guides/install-git):
+To download this repository, move to the `src` folder inside your ROS workspace. Now you can clone this repository by using [GIT](https://github.com/git-guides/install-git) in this way:
 ```bash
 git clone https://github.com/alessandrotrovatello/RT1_assignment2
 ```
+After that, return in your ROS workspace, using `cd ..` command, and re-compile your workspace using `catkin_make`.
 
+You are ready tu run the code!
 <a name="howto"></a>
 ## How to run the code
 
