@@ -11,6 +11,7 @@ Second assignment of the Research Track 1 course of the Master's degree in Robot
 - [How to download the repository](#rosrep)
   - [Setup your ROS workspace](#rosws)
 - [How to run the code](#howto)
+- [Possible improvements](#improvements)
 
 <a name="assignmentdescription"></a>
 ## Assignment description
@@ -53,6 +54,7 @@ rosservice call /last_target
 ```bash
 rosservice call /avg_dist_vel
 ```
+
 <a name="rosrep"></a>
 ## How to download the repository
 
@@ -115,6 +117,7 @@ git clone https://github.com/alessandrotrovatello/RT1_assignment2
 After that, return in your ROS workspace, using `cd ..` command, and re-compile your workspace using `catkin_make`.
 
 You are ready tu run the code!
+
 <a name="howto"></a>
 ## How to run the code
 
@@ -123,8 +126,42 @@ The time to run the code has come, so, all you have to do is run the *.launch* f
 roslaunch assignment_2_2023 assignment1.launch
 ```
 
+Will open: three white terminals, RViz (ROS Visualisation) to display the robot data and the Gazebo simulation environment. Once everything is open, it's time to test the code!
 
+<p align="center">
+  <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/simulation.png" alt="Simulation">
+</p>
 
+Now you can set the goal coordinates inside the `action_client.py` xterm terminal. For example: x = 3, y = 3.5 and the robot will start to reaching the goal.
 
+<p align="center">
+  <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/goal_reached.png" alt="Goal Reached">
+</p>
 
+Once the goal has been reached, it will be print the robot's position and orientation.
+While the robot is moving, you can call the services implemented by opening a new terminal and typing:
 
+To retrieve the last goal coordinates:
+```bash
+rosservice call /last_target
+```
+And you can see the result inside the `last_target_service.py` xterm terminal:
+
+<p align="center">
+  <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/last_target.png" alt="Last target">
+</p>
+
+To retrieve the distance between the robot and the target, the average of linear velocity along robot x-axis and the average of angular valocity along robot z-axis:
+```bash
+rosservice call /avg_dist_vel
+```
+And you can see the result inside the `avg_service.py` xterm terminal:
+
+<p align="center">
+  <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/avg.png" alt="Dist and Avg">
+</p>
+
+It will certainly be possible to cancel the set goal while the robot is in motion and set a new goal coordinates.
+
+<a name="improvements"></a>
+## Possible improvements
