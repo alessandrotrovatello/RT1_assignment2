@@ -60,6 +60,11 @@ The assignment is developed in [Ubuntu 20.04 LTS](https://ubuntu.com/tutorials/i
 
 The code must be cloned within your ROS workspace, if you already have a ROS workspace skip the next steps until the [git clone](#clone) command.
 
+First, it is necessary to install `xterm`; a kind terminal for a clearer overview:
+```bash
+sudo apt-get -y install xterm
+```
+
 <a name="rosws"></a>
 ### How to setup your ROS workspace
 To setup your own ROS workspace, the first step is to create a new directory:
@@ -112,4 +117,14 @@ After that, return in your ROS workspace, using `cd ..` command, and re-compile 
 You are ready tu run the code!
 <a name="howto"></a>
 ## How to run the code
+
+The time to run the code has come, so, all you have to do is run the *.launch* file and the simulation will open up:
+```bash
+roslaunch assignment_2_2023 assignment1.launch
+```
+
+
+
+
+
 
