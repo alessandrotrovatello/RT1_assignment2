@@ -14,7 +14,7 @@ The main task of this assignment is to create a ROS package which must include t
   
 Another task is to create a launch file to start the entire simulation, in which a parameter must be used to select the size of the averaging window.
 
-The starting point of the assignment is reachable in the [starting_point](https://github.com/alessandrotrovatello/RT1_assignment2/tree/starting_point) branch.
+The starting point of the assignment is reachable in the [starting_point](https://github.com/alessandrotrovatello/RT1_assignment2/tree/starting_point) branch. Nodes already implemented are *go_to_point_service.py*, *wall_follow_service.py* and *bug_as.py* that manages the robot's algorithm in reaching the goal, such as system messages and obstacle avoidance management.
 
 ## ROS Architecture
 
@@ -27,7 +27,7 @@ To give a better idea of how the architecture is composed, this below is a graph
 Where we can see how the nodes, the msg and srv communicate with each other, in a better and clearly way.
 
 The nodes developed are an action client and two service node to get information about last target coordinates and the distance between the robot and target and the average speed of the robot:
-- **action_client** is the node that allows us to get the goal coordinates from the user to be sent to the server throught the `/reaching_goal` topic; the node allow us to cancel the goal while the robot is reaching the goal. Addiotionally, the node publish the information about robot position and velocity in a `/robot_pos_vel` topic as a custom message. The following flowchart explains how the action client is structured:
+- **action_client** is the node that allows us to get the goal coordinates from the user to be sent to the server throught the `/reaching_goal` topic; the node allows us to cancel the goal while the robot is reaching the goal. Additionally, the node publish the information about robot position and velocity in a `/robot_pos_vel` topic as a custom message. The following flowchart explains how the action client is structured:
 
 <p align="center">
   <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/action_client_flowchart.png" alt="*action_client*'s flowchart">
