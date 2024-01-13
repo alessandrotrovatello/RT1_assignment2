@@ -27,7 +27,7 @@ The nodes developed are an action client and two service node to get information
 - **action_client** is the node that allows us to get the goal coordinates from the user to be sent to the server throught the `/reaching_goal` topic; the node allow us to cancel the goal while the robot is reaching the goal. Addiotionally, the node publish the information about robot position and velocity in a `/robot_pos_vel` topic as a custom message. The following flowchart explains how the action client is structured:
 
 <p align="center">
-  <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/action_client_flowchart.png" alt="*action_client*'s flowchart">
+  <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/action_client_flowchart.png" alt="*action_client*'s flowchart">
 </p>
 
 There is a little control on the user input to get only coordinates in range to [-9,9] due to the size of the environment (10x10 grid), furthermore there is a goal threshold to prevent the robot from not reaching the desired position in case that position is occupied by an obstacle.
