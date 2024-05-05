@@ -5,6 +5,9 @@ Second assignment of the Research Track 1 course of the Master's degree in Robot
   <img src="https://github.com/alessandrotrovatello/RT1_assignment2/blob/main/images/grid.png" alt="Environment">
 </p>
 
+## The documentation can be found here:
+https://alessandrotrovatello.github.io/RT1_assignment2/
+
 ## Table of contents
 - [Assignment description](#assignmentdescription)
 - [ROS Architecture](#rosarchitecture)
