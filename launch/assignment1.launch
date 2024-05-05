@@ -11,5 +11,5 @@
     <node pkg="assignment_2_2023" type="last_target_service.py" name="last_target" launch-prefix="xterm -e" />
     <node pkg="assignment_2_2023" type="avg_service.py" name="avg_dist_vel" launch-prefix="xterm -e" />
     <node pkg="assignment_2_2023" type="bug_as.py" name="bug_action_service" output="screen" />
-    <node pkg="assignment_2_2023" type="action_client.py" name="action_client" launch-prefix="xterm -e" />
+    <!-- <node pkg="assignment_2_2023" type="action_client.py" name="action_client" launch-prefix="xterm -e" /> -->
 </launch>

@@ -1,8 +1,20 @@
 #! /usr/bin/env python
 
-# Action client node, allowing the user to set a target (x,y) or to cancel it.
-# The node also publishes the robot position and velocity as a custom message
-# (x,y,vel_x,vel_z), by relying on the values published on the topic /odom.
+"""
+.. module: action_client
+
+	:platform: Unix
+	:synopsis: Action client node.
+.. moduleauthor:: Alessandro Trovatello
+
+This node allowing the user to set a target (x,y) or to cancel it. The node also publishes the robot position and velocity as a custom message (x,y,vel_x,vel_z), by relying on the values published on the topic /odom.
+
+Subscribes to:
+	/odom
+
+Publishes to:
+	/robot_pos_vel
+"""
 
 import time
 import rospy
@@ -18,10 +30,14 @@ from geometry_msgs.msg import Point, Pose, Twist
 
 
 def clbk_odom(msg):
-# Callback function that process incoming Odometry messages,
-# extract informations about: position x, position y, linear velocity x and
-# angular velocity z; Save these informations in a custom message Info()
-# and pubblish that informations on /robot_pos_vel topic.
+	"""
+	Callback function that process incoming Odometry messages,
+	extract informations about: position x, position y, linear velocity x and
+	angular velocity z; Save these informations in a custom message Info()
+	and pubblish that informations on /robot_pos_vel topic.
+	
+	:param msg: position and velocity of the robot.
+	"""
 	
 	# Initialize a new message
 	# The struct of Info() is (x,y,vel_x,vel_z)
@@ -39,6 +55,11 @@ def clbk_odom(msg):
 
 
 def clbk_feedback(feedback):
+	"""
+	Callback function that process the feedback from client.
+	
+	:param feedback: feedback from the target as "Target reached!" or "Target cancelled!".
+	"""
 	if feedback.stat == "Target reached!":
 		print(feedback)
 		print("Press 'Enter' to set a new goal\n")
@@ -46,7 +67,10 @@ def clbk_feedback(feedback):
 		print(feedback)
         
 def action():
-	
+	"""
+	Action function that handle the goal coordinates from the user input and send the goal to the planning.
+	While the robot is moving the user can cancel the goal pressing "c".
+	"""
 	# Execution of client request to the server
 	client = actionlib.SimpleActionClient('/reaching_goal', assignment_2_2023.msg.PlanningAction)
 	# Block the execution until communication with server is established
@@ -96,20 +120,22 @@ def action():
 		
 	
 def main():
+	"""
+	Main function in which the ros node is initialized and the publisher and subscriber are initialized.
+	"""
 	global pub, sub
 	
-	# Initialize the service node
+	"""Initialize the service node"""
 	rospy.init_node('action_client')
-
-	# Creating a ROS publisher to publish on /robot_pos_vel topic the position and velocity of Robot
+	
+	"""Creating a ROS publisher to publish on /robot_pos_vel topic the position and velocity of Robot"""
 	pub = rospy.Publisher('/robot_pos_vel', Info, queue_size=10)
-
-	# Creating a ROS subscriber to listens to the /odom topic
+	
+	"""Creating a ROS subscriber to listens to the /odom topic"""
 	sub = rospy.Subscriber('/odom', Odometry, clbk_odom)
 	
-	# Run the action function
+	"""Run the action function"""
 	action()
-
 
 if __name__ == "__main__":
 	main()
